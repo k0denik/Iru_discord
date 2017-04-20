@@ -17,7 +17,28 @@ namespace Iru_discord
             {
                 comm = new MemoCommand(hand);
             }
+            
             comm?.Start();
+            RollForMeme(e);
+        }
+
+        private static void RollForMeme(Discord.MessageEventArgs e)
+        {
+            String m = e.Message.RawText;
+            if (m.Contains("huh"))
+            {
+                if (new Random().Next(3) == 1)
+                {
+                    e.Channel.SendMessage("huh?");
+                }
+            }
+            else if(m.StartsWith(">"))
+            {
+                if (new Random().Next(150)==1)
+                {
+                    e.Channel.SendMessage(">implying");
+                }
+            }
         }
     }
 }
