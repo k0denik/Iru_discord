@@ -8,6 +8,10 @@ namespace Iru_discord
         {
             Command comm = null;
             String m = e.Message.RawText;
+            if (e.User.IsBot)
+            {
+                return;
+            }
             CommandHandler hand = new DiscordCommandHandler(e);
             if (m.StartsWith("!hug"))
                 comm = new HugCommand(hand);
